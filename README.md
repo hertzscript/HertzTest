@@ -1,3 +1,3 @@
 # HertzTest
 
-Comprehensive (soon) integration tests for the HertzScript compiler!
+Comprehensive (soon) integration tests for the [HertzScript](https://github.com/Floofies/HertzScript) compiler!

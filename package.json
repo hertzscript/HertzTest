@@ -1,0 +1,27 @@
+{
+  "name": "hertztest",
+  "version": "1.0.0",
+  "description": "Comprehensive integration tests for the HertzScript compiler!",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trgwii/HertzTest.git"
+  },
+  "keywords": [
+    "HertzScript",
+    "test"
+  ],
+  "author": "Thomas Rory Gummerson <thomas@gummerson.no> (https://trgwii.no/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/trgwii/HertzTest/issues"
+  },
+  "homepage": "https://github.com/trgwii/HertzTest#readme",
+  "dependencies": {
+    "hertzscript": "git+https://github.com/Floofies/HertzScript.git",
+    "isfqdn": "git+https://github.com/trgwii/isFQDN.git"
+  }
+}
