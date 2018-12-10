@@ -6,6 +6,5 @@ const { promtest } = require('./utils');
 Promise.all([
 	promtest(require('./tests/isFQDN'), {})
 ])
-	.then(function (results) {
-		console.log(results);
-	});
+	.then(results =>
+		console.log(results));
