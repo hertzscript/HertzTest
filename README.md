@@ -12,12 +12,12 @@ npm i
 
 Linux:
 ```bash
-./compile.sh
-./run.sh
+./scripts/compile.sh
+./scripts/run.sh
 ```
 
 Windows:
 ```cmd
-compile
-run
+scripts\compile
+scripts\run
 ```
