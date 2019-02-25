@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Comprehensive integration tests for the HertzScript compiler!",
   "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
   "scripts": {
     "test": "node ."
   },
@@ -21,7 +24,7 @@
   },
   "homepage": "https://github.com/trgwii/HertzTest#readme",
   "dependencies": {
-    "hertzscript": "git+https://github.com/Floofies/HertzScript.git",
-    "isfqdn": "git+https://github.com/trgwii/isFQDN.git"
+    "hertzscript-compiler": "0.0.7",
+    "hertzscript-dispatcher": "0.0.12"
   }
 }
