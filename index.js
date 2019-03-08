@@ -61,7 +61,7 @@ readdir(testDir)
 		Promise.all(results.map(dir =>
 			proc(
 				dir,
-				[ 'node', [ 'test.hz.js' ] ]))))
+				[ 'node', [ '--max-old-space-size=4', 'test.hz.js' ] ]))))
 	.catch(({ dir, code }) => {
 		console.error(dir + ' (run): ❌  (' + code + ')');
 		process.exit(1);
