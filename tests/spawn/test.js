@@ -8,7 +8,7 @@ const sleep = ms => {
 };
 
 const unlock = f => {
-	sleep(10000);
+	sleep(1000);
 	f();
 };
 
@@ -16,5 +16,5 @@ let wait = true;
 spawn unlock(() => wait = false);
 
 while (wait);
-console.log('10 sec passed');
+console.log('1 sec passed');
 assert(wait === false);

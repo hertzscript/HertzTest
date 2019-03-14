@@ -1,7 +1,5 @@
 'use strict';
 
-const assert = require('assert');
-
 const range = function* (
 	from,
 	to,
@@ -17,8 +15,19 @@ const range = function* (
 		return undefined;
 	}
 	yield from;
-	yield* range(from + step, to, step);
+	return yield* range(from + step, to, step);
 };
 
-assert.deepStrictEqual([ ...range(0, 3) ], [ 0, 1, 2 ]);
+const actual = [ ...range(0, 3) ];
+console.log(actual);
+const expected = [ 0, 1, 2 ];
+
+if (
+	actual[0] !== expected[0] ||
+	actual[1] !== expected[1] ||
+	actual[2] !== expected[2] ||
+	actual.length !== expected.length
+) {
+	throw new Error('Fail!');
+}
 console.log('Generators done!');
