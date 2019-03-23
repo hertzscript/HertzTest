@@ -10,9 +10,7 @@ const range = function* (
 			? from <= to
 			: from >= to
 	) {
-		// Compile bug with nullary return value
-		// return;
-		return undefined;
+		return;
 	}
 	yield from;
 	return yield* range(from + step, to, step);
