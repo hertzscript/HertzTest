@@ -25,6 +25,6 @@
   "homepage": "https://github.com/trgwii/HertzTest#readme",
   "dependencies": {
     "hertzscript-compiler": "0.0.10",
-    "hertzscript-dispatcher": "0.0.16"
+    "hertzscript-dispatcher": "0.0.17"
   }
 }
