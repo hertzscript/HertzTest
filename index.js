@@ -3,15 +3,43 @@
 const fs = require('fs');
 const { join } = require('path');
 const { promisify } = require('util');
+
+const yargs = require('yargs');
+
+
 const proc = require('./utils/proc');
-const parse = require('./utils/args');
 
 const readdir = promisify(fs.readdir);
 
-const { _: filter, ...opts } = parse(process.argv.slice(2));
+const hasCompiler = fs.existsSync(join(
+	__dirname,
+	'node_modules',
+	'hertzscript-compiler',
+	'package.json'));
 
+const args = yargs
+	.alias('v', 'version')
+	.alias('h', 'help')
+	.option('o', {
+		alias: 'out',
+		default: false,
+		describe: 'Show output from tests',
+		type: 'boolean'
+	})
+	.option('c', {
+		alias: 'compiler-path',
+		demandOption: !hasCompiler,
+		default: hasCompiler
+			? join('node_modules', 'hertzscript-compiler')
+			: undefined,
+		describe: 'path to hertzscript-compiler node module',
+		type: 'string'
+	})
+	.argv;
 
-const stdio = opts.out || opts.o
+const filter = args._;
+
+const stdio = args.o
 	? 'inherit'
 	: 'ignore';
 
@@ -32,7 +60,16 @@ readdir(tests)
 			: dirs)
 	.then(dirs =>
 		Promise.all(dirs.map(dir => join(tests, dir)).map(dir =>
-			proc('hzc', hzArgs, dir, stdio)
+			proc('node', [
+				join(
+					__dirname,
+					args.compilerPath,
+					require(join(
+							__dirname,
+							args.compilerPath,
+							'package.json')).bin.hzc),
+				...hzArgs
+			], dir, stdio)
 				.catch(err => {
 					throw new Error(
 						`${err.message} (compile: ${err.code})`);
