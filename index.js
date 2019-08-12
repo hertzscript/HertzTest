@@ -85,7 +85,7 @@ readdir(tests)
 								`${err.message} (run: ${err.code})`);
 						}))
 				.then(
-					() =>
-						console.log(`${dir}: ✅`),
+					({ code, time }) =>
+						console.log(`${dir}: ✅  (${time}ms)`),
 					err =>
 						console.error(`${err.message}: ❌`)))));

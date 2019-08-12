@@ -7,8 +7,9 @@ const isWin = platform() === 'win32';
 
 
 const proc = (cmd, args, cwd = '.', stdio = 'ignore') =>
-	new Promise((resolve, reject) =>
-		spawn(
+	new Promise((resolve, reject) => {
+		const start = Date.now();
+		return spawn(
 			...isWin
 				? [ 'cmd.exe', [ '/c', cmd, ...args ] ]
 				: [ cmd, args ],
@@ -18,10 +19,11 @@ const proc = (cmd, args, cwd = '.', stdio = 'ignore') =>
 			})
 			.once('exit', code =>
 				code === 0
-					? resolve(code)
+					? resolve({ code, time: Date.now() - start })
 					: reject(
 						Object.assign(
 							new Error(cwd),
-							{ code }))));
+							{ code })));
+	});
 
 module.exports = proc;
