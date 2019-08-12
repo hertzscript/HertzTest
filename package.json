@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/trgwii/HertzTest#readme",
   "dependencies": {
-    "yargs": "^13.2.2"
+    "yargs": "^13.3.0"
   },
   "devDependencies": {
     "hertzscript-compiler": "0.0.10",
